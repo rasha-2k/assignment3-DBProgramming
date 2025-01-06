@@ -1,0 +1,37 @@
+﻿@page
+@model UsersModel
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div>
+    <h1>Users</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Mobile</td>
+                    <td>@user.Address</td>
+                    <td>
+                        <!-- Delete Button -->
+                        <form method="post" asp-page-handler="Delete">
+                            <input type="hidden" name="Id" value="@user.Id" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
